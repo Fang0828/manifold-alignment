@@ -20,7 +20,7 @@ Hdistribution<-function(x,l){
 emPvalue<-function(times,cellcluster){
   randomH=sapply(1:times,Hdistribution,l=length(levels(factor(cellcluster$cluster))))
   H=sum(sapply(levels(factor(cellcluster$cluster)),Hindex,cellcluster=cellcluster))
-  pp=sum(randomH>=H)/length(randomH)
+  pp=(sum(randomH>=H)+1)/(length(randomH)+1)
   Hres=list(randomH=randomH,pvalue=pp,H=H)
   return(Hres)
 
